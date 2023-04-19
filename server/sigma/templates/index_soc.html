@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Sigma Camp</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+  <script src="{{ url_for('static', filename='sigma_state.js') }}"></script>
+  <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+  </head>
+  <body>
+    <div id="calc-container">
+      <h1>Sigma Camp State</h1>
+      <p>Register your house</p> 
+      <label>Enter name:</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="type" value="staff" id="staff-option">
+        <label class="form-check-label" for="staff-option">
+          Staff
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="type" value="camper" id="camper-option" checked>
+        <label class="form-check-label" for="camper-option">
+          Camper
+        </label>
+     </div>
+     <br>
+     <label>House name:</label>
+     <input type="text" name="house_name" id="house_id">
+     </br><br>
+     <input type="submit" name="next" value="Next" onclick="registerHouse();">
+ 
+     <br><br>
+     <div id="qtc-results">
+     <h2>Results</h2>
+	 <p><span id="qtc">   </span></p>
+     <br>
+     <p><span id="prolonged"></span></p>
+     <p>Saved data. There are <span id="num-rows"></span> items saved.</p>
+     </div>
+    </div>
+	 <div id="data"></div>
+
+    <script>
+      $(document).ready(function() {
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+        socket.on('data', function(data) {
+          $('#data').text(data); // update the webpage with the new data
+        });
+      });
+    </script>
+  </body>
+</html>
