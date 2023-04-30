@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>List of Houses with Light Switches and Smart Sensors</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      .add-btn, .edit-btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+      .sort-options {
+        margin-top: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>List of Houses with Light Switches and Smart Sensors</h1>
+    <div class="sort-options">
+      <label for="sort">Sort by:</label>
+      <select id="sort">
+        <option value="name">Name</option>
+        <option value="switches">Light Switch State</option>
+      </select>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Light Switches</th>
+          <th>Smart Sensors</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>123 Main St, Anytown, CA</td>
+          <td>3</td>
+          <td>2</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td>456 Oak Ave, Springfield, IL</td>
+          <td>2</td>
+          <td>1</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td>789 Elm St, Smallville, OH</td>
+          <td>4</td>
+          <td>3</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td>1011 Maple St, Bigtown, TX</td>
+          <td>5</td>
+          <td>2</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td>567 Pine St, Hillville, NY</td>
+          <td>1</td>
+          <td>0</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="add-btn">Add House</button>
+  </body>
+</html>

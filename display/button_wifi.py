@@ -8,7 +8,7 @@ import urequests
 #Enter correct router name and password
 ssidRouter     = 'TP-Link_3E52' #Enter the router name
 passwordRouter = '37424916' #'21filk' #Enter the router password 37424916
-server_ip = '192.168.0.101'
+server_ip = '192.168.0.100'
 #ssidRouter = 'NETGEAR03'
 #passwordRouter = 'crispygiant525'
 
