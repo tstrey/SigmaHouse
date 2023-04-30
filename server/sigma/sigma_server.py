@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask import send_from_directory
 from flask_socketio import SocketIO
+from datetime import datetime
 import subprocess
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
@@ -29,10 +30,13 @@ def register():
   print("in register")
   result = {'already': ''}
   client_ip = request.remote_addr
+  # Get current timestamp
+  timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
   if client_ip not in client_ips:
-      client_ips[client_ip] = client_ip
-      result = {'ip': client_ip}  
+      client_ips[client_ip] = timestamp
+      result = {'ip': client_ip, 'timestamp': timestamp}  
   else:
+    client_ips[client_ip] = timestamp
     result = {'already': client_ip}  
   print(result)  
   return jsonify(result)
@@ -42,7 +46,7 @@ def updateIps():
   print("in updateIps")
   json_list = []
   for key in client_ips:
-    clientIp = {'ip': key}
+    clientIp = {'ip': key, 'timestamp': client_ips[key]}
     json_list.append(clientIp) 
   return jsonify(json_list)
 

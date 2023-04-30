@@ -51,7 +51,7 @@ function updateIps() {
 		   for (i = 0; i < result.length; i++) { 
 		   
 				var newRow = $('<tr><td>' + result[i].ip + '</td>' +
-				'<td></td>' +
+				'<td>' + result[i].timestamp + '</td>' +
 				'<td><button class="edit-btn">Edit</button></td></tr>');
 				$("#ip_container").append(newRow);
 		   }
@@ -71,7 +71,7 @@ function registerIp() {
 			   alert('IP ' + result.already + ' already registered!')
 		   } else {
 			   var newClient = $('<tr><td>' + result.ip + '</td>' +
-				'<td></td>' +
+				'<td>' + result.timestamp + '</td>' +
 				'<td><button class="edit-btn">Edit</button></td></tr>');
 				$("#ip_container").append(newClient);
 		   }
