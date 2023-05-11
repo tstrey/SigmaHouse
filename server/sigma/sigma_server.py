@@ -1,8 +1,6 @@
 import os
 import time
 from flask import Flask, render_template, url_for, request, jsonify, session, json
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
 from flask import send_from_directory
 from flask_socketio import SocketIO
 from datetime import datetime
@@ -14,6 +12,8 @@ app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 client_ips = {
 }
+house_ips = {
+}   
 
 @app.route('/')
 def index():
@@ -41,6 +41,22 @@ def register():
   print(result)  
   return jsonify(result)
 
+@app.route('/registerHouse')
+def registerHouse():
+  print("in register house")
+  result = {'already': ''}
+  house_ip = request.remote_addr
+  # Get current timestamp
+  timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+  if house_ip not in house_ips:
+      house_ips[house_ip] = timestamp
+      result = {'ip': house_ip, 'timestamp': timestamp}  
+  else:
+    house_ips[house_ip] = timestamp
+    result = {'already': house_ip}  
+  print(result)  
+  return jsonify(house_ips)
+
 @app.route('/updateIps')
 def updateIps():
   print("in updateIps")
@@ -48,6 +64,15 @@ def updateIps():
   for key in client_ips:
     clientIp = {'ip': key, 'timestamp': client_ips[key]}
     json_list.append(clientIp) 
+  return jsonify(json_list)
+
+@app.route('/updateHouses')
+def updateHouses():
+  print("in updateHouses")
+  json_list = []
+  for key in house_ips:
+    houseIp = {'ip': key, 'timestamp': house_ips[key]}
+    json_list.append(houseIp) 
   return jsonify(json_list)
 
 
@@ -107,7 +132,7 @@ def process_qt_calculation():
 
 if __name__ == "__main__":
     print('about to start server')
-    app.run(port=80, threaded=False, use_reloader=False, debug=True, host="0.0.0.0")
+    app.run(port=80, threaded=False, use_reloader=True, debug=True, host="0.0.0.0")
 
 
 

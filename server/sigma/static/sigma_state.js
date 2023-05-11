@@ -84,6 +84,24 @@ function registerIp() {
 	});
 }
 
+function updateHouses() {
+	$.ajax({
+	  url: "/updateHouses",
+	  type: "GET",
+	  dataType: "json",
+	   success: function(result) {
+		   $("#house_container").html('');
+		   for (i = 0; i < result.length; i++) { 
+		   
+				var newRow = $('<tr><td>' + result[i].ip + '</td>' +
+				'<td>' + result[i].timestamp + '</td>' +
+				'<td><button class="edit-btn">Edit</button></td></tr>');
+				$("#house_container").append(newRow);
+		   }
+		}
+	});
+}
+
 
 function listHouses() {
 

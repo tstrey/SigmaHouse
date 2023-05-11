@@ -31,14 +31,15 @@ def STA_Setup(ssidRouter,passwordRouter):
     #Print the IP address assigned to ESP32 in “Shell”.
         print('Connected, IP address:', sta_if.ifconfig())
  #       url='http://192.168.0.100/mdds/standalone/test.json'
-        url='http://' + server_ip + '/xyz/standalone/test.json'
-        resp = urequests.get(url)
+ #       url='http://' + server_ip + '/xyz/standalone/test.json'
+        urlRegister = 'http://' + server_ip + '/registerHouse'
+        resp = urequests.get(urlRegister)
         print(resp.status_code)
         json_resp = resp.json()
-        lcd.move_to(1, 0)
-        lcd.putstr(json_resp['data']['hello'])
-        lcd.move_to(1, 1)
-        lcd.putstr(json_resp['data']['todo'])
+        #lcd.move_to(1, 0)
+        #lcd.putstr(json_resp['data']['hello'])
+        #lcd.move_to(1, 1)
+        #lcd.putstr(json_resp['data']['todo'])
         print(resp.json())
         #http://192.168.0.101/mdds/standalone/config.json
         print("Setup End")
