@@ -9,6 +9,10 @@
         border-collapse: collapse;
         width: 100%;
       }
+
+      .green{
+      background-color: green;
+      }
 	  
 	  table.ip {
         width: 50%;
@@ -55,7 +59,7 @@
       }
     </style>
   </head>
-  <body onload="updateIps()">
+  <body onload="updateIps();setInterval(updateHouses, 5000);">
 	<h2>Sigma Web Clients</h2>
 	<button class="upd-btn"  onclick="updateIps();">Update</button><button class="upd-btn" onclick="registerIp();">Register</button><button class="upd-btn" onclick="clearIps();">Clear</button>
     <table class="ip">

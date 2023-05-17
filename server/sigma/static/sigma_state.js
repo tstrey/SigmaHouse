@@ -1,33 +1,4 @@
 
-function registerHouse() {
-  var prolonged;
-  var sex = document.getElementsByName("sex");
-  var qtcResult = document.getElementById("qtc");
-  var prolongedResult = document.getElementById("prolonged");
-  var resultsContainer = document.getElementById("qtc-results");
-  var numRows = document.getElementById("num-rows");
-  
-  resultsContainer.style.display = "block";
-
- 
-  qtcResult.innerHTML = 'Initial setup';
-
- var server_data = [
-  {"House_name": $('#house_id').val()},
-  {"Sex": $('input[name="type"]:checked').val()}
- ];
- 
- $.ajax({
-   type: "POST",
-   url: "/process_house",
-   data: JSON.stringify(server_data),
-   contentType: "application/json",
-   dataType: 'json',
-   success: function(result) {
-     numRows.innerHTML = result.rows; 
-   } 
- });
-}
 
 function clearIps() {
 	$.ajax({
@@ -40,6 +11,7 @@ function clearIps() {
 		}
 	});
 }
+
 
 function updateIps() {
 	$.ajax({
@@ -91,10 +63,9 @@ function updateHouses() {
 	  dataType: "json",
 	   success: function(result) {
 		   $("#house_container").html('');
-		   for (i = 0; i < result.length; i++) { 
-		   
+		   for (i = 0; i < result.length; i++) {
 				var newRow = $('<tr><td>' + result[i].ip + '</td>' +
-				'<td>' + result[i].timestamp + '</td>' +
+				'<td class=' + result[i].display_alarm + '>' + result[i].timestamp + '</td>' +
 				'<td><button class="edit-btn">Edit</button></td></tr>');
 				$("#house_container").append(newRow);
 		   }
@@ -102,22 +73,4 @@ function updateHouses() {
 	});
 }
 
-
-function listHouses() {
-
-  var houses = document.getElementById("houses");
- 
-	 $.ajax({
-	   type: "GET",
-	   url: "/list_houses",
-	   contentType: "application/json",
-	   dataType: 'json',
-	   success: function(result) {
-		   var newClient = $('<tr><td>' + result.ip + '</td>' +
-          '<td></td>' +
-          '<td><button class="edit-btn">Edit</button></td></tr>');
-			$("#ip_container").append(newClient);
-		} 
-	 });
-}
 

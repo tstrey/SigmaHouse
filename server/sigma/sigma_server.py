@@ -13,7 +13,10 @@ socketio = SocketIO(app)
 client_ips = {
 }
 house_ips = {
-}   
+}
+alarm_ips = {
+}
+
 
 @app.route('/')
 def index():
@@ -48,13 +51,28 @@ def registerHouse():
   house_ip = request.remote_addr
   # Get current timestamp
   timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-  if house_ip not in house_ips:
-      house_ips[house_ip] = timestamp
-      result = {'ip': house_ip, 'timestamp': timestamp}  
-  else:
-    house_ips[house_ip] = timestamp
-    result = {'already': house_ip}  
+  result = {'ip': house_ip, 'timestamp': timestamp, 'display_alarm': 'green'}
+  house_ips[house_ip] = result
+  if house_ip in house_ips:
+    result['already'] = house_ip
   print(result)  
+  return jsonify(house_ips)
+
+@app.route('/updateHouseState', methods=['POST', 'GET'])
+def updateHouseState():
+  print("in updateHouseState")
+  # Get current timestamp
+  timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+  if request.method == "POST":
+      request_json = request.get_json()
+      house_ip = request.remote_addr
+      request_json['timestamp'] = timestamp
+      request_json['ip'] = house_ip
+      if "alarm" in request_json:
+        request_json["display_alarm"] = "red"
+      else:
+        request_json["display_alarm"] = "green"
+
   return jsonify(house_ips)
 
 @app.route('/updateIps')
@@ -71,8 +89,7 @@ def updateHouses():
   print("in updateHouses")
   json_list = []
   for key in house_ips:
-    houseIp = {'ip': key, 'timestamp': house_ips[key]}
-    json_list.append(houseIp) 
+    json_list.append(house_ips[key])
   return jsonify(json_list)
 
 
@@ -110,23 +127,15 @@ def mdds():
     return send_from_directory('mdds/standalone/', 'test.json')
 
 
-
-@app.route('/list_houses', methods=['POST', 'GET'])
-def listHouses():
-    print('in houses list')
-    json_obj = json.dumps(client_ips)
-    print(json_obj)
-    return jsonify(json_obj)
-    
 @app.route('/process_house', methods=['POST', 'GET'])
-def process_qt_calculation():
-  print('in process_qt_calculation')
+def process_house():
+  print('in process_house')
   if request.method == "POST":
-    qtc_data = request.get_json()
-    client_ip = request.remote_addr
-    client_ips[client_ip] = client_ip
-    print(qtc_data)
-  results = {'rows': 'Sigma Houses name ' + qtc_data[0]['House_name']}
+    request_json = request.get_json()
+    house_ip = request.remote_addr
+    house_ips[house_ip] = request_json
+    print(request_json)
+  results = {'rows': 'Sigma Houses name ' + request_json[0]['House_name']}
   return jsonify(results)
 
 

@@ -28,27 +28,37 @@ def STA_Setup(ssidRouter,passwordRouter):
     #Wait for ESP32 to connect to router until they connect to each other successfully.
             while not sta_if.isconnected():
                 pass
-    #Print the IP address assigned to ESP32 in “Shell”.
         print('Connected, IP address:', sta_if.ifconfig())
- #       url='http://192.168.0.100/mdds/standalone/test.json'
- #       url='http://' + server_ip + '/xyz/standalone/test.json'
- # registerHouse - > registerHouse in server
         urlRegister = 'http://' + server_ip + '/registerHouse'
         resp = urequests.get(urlRegister)
         print(resp.status_code)
         json_resp = resp.json()
-        #lcd.move_to(1, 0)
-        #lcd.putstr(json_resp['data']['hello'])
-        #lcd.move_to(1, 1)
-        #lcd.putstr(json_resp['data']['todo'])
         print(resp.json())
-        #http://192.168.0.101/mdds/standalone/config.json
         print("Setup End")
         button1 = Pin(16, Pin.IN, Pin.PULL_UP)
         led = Pin(12, Pin.OUT)
+        PIR = Pin(14, Pin.IN)
         count = 0
+        
+        localIp = sta_if.ifconfig()[0]
 
         while True:
+            pirValue = PIR.value()
+                    
+            # Define the JSON data to send
+            data = {"key1": "value1", "key2": "value2"}
+
+            # Convert the JSON data to a string
+            json_data = json.dumps(data)
+
+            # Set the headers
+            headers = {"Content-Type": "application/json"}
+
+            # Send the request
+            response = requests.post("http://example.com/api/endpoint", data=json_data, headers=headers)
+
+            # Print the response
+            print(response.text)
             btnVal1 = button1.value()  # Reads the value of button 1
             #print("button1 =",btnVal1)  #Print it out in the shell
             if(btnVal1 == 0):
