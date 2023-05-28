@@ -33,7 +33,9 @@ def STA_Setup(ssidRouter,passwordRouter):
  #       url='http://192.168.0.100/mdds/standalone/test.json'
  #       url='http://' + server_ip + '/xyz/standalone/test.json'
  # registerHouse - > registerHouse in server
+        print('localIp ' + sta_if.ifconfig()[0])
         urlRegister = 'http://' + server_ip + '/registerHouse'
+        print('urlRegister ' + urlRegister)
         resp = urequests.get(urlRegister)
         print(resp.status_code)
         json_resp = resp.json()
@@ -47,6 +49,7 @@ def STA_Setup(ssidRouter,passwordRouter):
         button1 = Pin(16, Pin.IN, Pin.PULL_UP)
         led = Pin(12, Pin.OUT)
         count = 0
+        print("About to enter True")
 
         while True:
             btnVal1 = button1.value()  # Reads the value of button 1

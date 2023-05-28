@@ -16,6 +16,7 @@ house_ips = {
 }
 alarm_ips = {
 }
+GLOBAL_ALARM = False
 
 
 @app.route('/')
@@ -58,20 +59,46 @@ def registerHouse():
   print(result)  
   return jsonify(house_ips)
 
+@app.route('/checkAlarmStatus', methods=['POST', 'GET'])
+def checkAlarmStatus():
+    global GLOBAL_ALARM
+    print('from checkAlarmStatus 1 GLOBAL_ALARM = ' + str(GLOBAL_ALARM))
+    print("in checkAlarmStatus")
+    alarm_json = {"alarm": "off"}
+    if GLOBAL_ALARM:
+        alarm_json = {"alarm": "on"}
+    print('from checkAlarmStatus 2 GLOBAL_ALARM = ' + str(GLOBAL_ALARM))
+    return jsonify(alarm_json)
+
 @app.route('/updateHouseState', methods=['POST', 'GET'])
 def updateHouseState():
   print("in updateHouseState")
   # Get current timestamp
   timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+  print(timestamp)
+  #  data = {'ip': house_ip, "alarm": "motion"}
   if request.method == "POST":
+      print('in post')
       request_json = request.get_json()
+      print(request_json)
       house_ip = request.remote_addr
+      print(request_json)
       request_json['timestamp'] = timestamp
       request_json['ip'] = house_ip
+      global GLOBAL_ALARM
+      print('from updateHouseState GLOBAL_ALARM = ' + str(GLOBAL_ALARM))
       if "alarm" in request_json:
-        request_json["display_alarm"] = "red"
+        alarm = request_json['alarm']
+        if alarm == 'off':
+            GLOBAL_ALARM = False
+        else:
+            request_json["display_alarm"] = "red"
+            GLOBAL_ALARM = True
       else:
         request_json["display_alarm"] = "green"
+        GLOBAL_ALARM = False
+      print('from updateHouseState GLOBAL_ALARM = ' + str(GLOBAL_ALARM))
+      house_ips[house_ip] = request_json
 
   return jsonify(house_ips)
 
@@ -131,6 +158,7 @@ def mdds():
 def process_house():
   print('in process_house')
   if request.method == "POST":
+    # data = {"houseIp": localIp, "alarmType": "motion"}
     request_json = request.get_json()
     house_ip = request.remote_addr
     house_ips[house_ip] = request_json

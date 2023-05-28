@@ -1,46 +1,136 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>Sigma Camp</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sigma Camp</title>
   <script src="{{ url_for('static', filename='sigma_state.js') }}"></script>
   <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
-  </head>
-  <body>
-    <div id="calc-container">
-      <h1>Sigma Camp State Hello</h1>
-      <p>Register your house please</p> 
-      <label>Enter name:</label>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="type" value="staff" id="staff-option">
-        <label class="form-check-label" for="staff-option">
-          Staff
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="type" value="camper" id="camper-option" checked>
-        <label class="form-check-label" for="camper-option">
-          Camper
-        </label>
-     </div>
-     <br>
-     <label>House name:</label>
-     <input type="text" name="house_name" id="house_id">
-     </br><br>
-     <input type="submit" name="next" value="Next" onclick="registerHouse();">  <input type="submit" name="houses" value="Houses" onclick="listHouses();">
- 
-     <br><br>
-     <div id="qtc-results">
-     <h2>Results</h2>
-	 <p><span id="qtc">   </span></p>
-     <br>
-     <p><span id="prolonged"></span></p>
-     <p>Saved data. There are <span id="num-rows"></span> items saved.</p>
-     </div>
-    </div>
-	 <div id="data"></div>
-	 <div id="houses"></div>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
 
+      .green{
+      background-color: green;
+      }
+
+      .red{
+        background-color: red;
+      }
+
+
+	  table.ip {
+        width: 50%;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+      }
+
+      th.sortable::after {
+        content: "";
+        float: right;
+        margin-top: 7px;
+        border-width: 0 4px 4px 0;
+        border-style: solid;
+        border-color: #666666 transparent transparent transparent;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+
+      th.sortable.asc::after {
+        transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+      }
+
+      .add-btn, .upd-btn,.edit-btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+      .sort-options {
+        margin-top: 16px;
+      }
+    </style>
+  </head>
+  <body onload="updateIps();setInterval(updateHouses, 5000);">
+	<h2>Sigma Web Clients</h2>
+	<button class="upd-btn"  onclick="updateIps();">Update</button><button class="upd-btn" onclick="registerIp();">Register</button><button class="upd-btn" onclick="clearIps();">Clear</button>
+    <table class="ip">
+      <thead>
+        <tr>
+          <th class="sortable">IP</th>
+          <th class="sortable">Time Stamp</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="ip_container">
+      </tbody>
+    </table>
+	<h2>Sigma Smart Houses</h2>
+	<button class="upd-btn"  onclick="updateHouses();">Update</button><button class="upd-btn" onclick="registerHouse();">Register</button><button class="upd-btn" onclick="clearHouses();">Clear</button>
+    <table>
+      <thead>
+        <tr>
+          <th class="sortable">Name</th>
+          <th class="sortable">Light Switches</th>
+          <th class="sortable">Smart Sensors</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="house_container">
+        <tr>
+          <td>123 Main St, Anytown, CA</td>
+          <td>3</td>
+          <td>2</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td>456 Oak Ave, Springfield, IL</td>
+          <td>2</td>
+          <td>1</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td>789 Elm St, Smallville, OH</td>
+          <td>4</td>
+          <td>3</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td>1011 Maple St, Bigtown, TX</td>
+          <td>5</td>
+          <td>2</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td>567 Pine St, Hillville, NY</td>
+          <td>1</td>
+          <td>0</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>

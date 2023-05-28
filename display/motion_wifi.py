@@ -4,6 +4,8 @@ from i2c_lcd import I2cLcd
 import time
 import network #Import network module
 import urequests
+import json
+import sys
 
 #Enter correct router name and password
 ssidRouter     = 'TP-Link_3E52' #Enter the router name
@@ -41,59 +43,65 @@ def STA_Setup(ssidRouter,passwordRouter):
         count = 0
         
         localIp = sta_if.ifconfig()[0]
-
+        print(localIp)
         while True:
+            print("in True")
             pirValue = PIR.value()
-                    
-            # Define the JSON data to send
-            data = {"key1": "value1", "key2": "value2"}
+            print(pirValue)
+            if pirValue == 1:
+                led.value(1)# turn on led
+                 # send alaram to the server
+                print('before data ' + localIp)
+                data = {"ip": localIp, "alarm": "motion"}
+                print('data defined')
+                print(data)
+                # Convert the JSON data to a string
+                json_data = json.dumps(data)
+                print(json_data)
 
-            # Convert the JSON data to a string
-            json_data = json.dumps(data)
+                # Set the headers
+                headers = {"Content-Type": "application/json"}
+                
+                print('about to send request')
 
-            # Set the headers
-            headers = {"Content-Type": "application/json"}
+                # Send the request
+                response = urequests.post("http://" + server_ip + "/updateHouseState", data=json_data, headers=headers)
 
-            # Send the request
-            response = requests.post("http://example.com/api/endpoint", data=json_data, headers=headers)
+                # Print the response
+                print(response.status_code)
+                print(response.json())
+                json_resp = response.json()
+                print('alarm on')
 
-            # Print the response
-            print(response.text)
-            btnVal1 = button1.value()  # Reads the value of button 1
-            #print("button1 =",btnVal1)  #Print it out in the shell
-            if(btnVal1 == 0):
-                time.sleep(0.01)
-                while(btnVal1 == 0):
-                    btnVal1 = button1.value()
-                    if(btnVal1 == 1):
-                        count = count + 1
-                        print(count)
-            val = count % 2
-            if(val == 1):
-                url='http://' + server_ip + '/xyz/standalone/test1.json'
-                resp = urequests.get(url)
-                print(resp.status_code)
-                json_resp = resp.json()
-                lcd.move_to(1, 0)
-                lcd.putstr(json_resp['data']['hello'])
-                lcd.move_to(1, 1)
-                lcd.putstr(json_resp['data']['todo'])
-                print(resp.json())
-                led.value(1)
             else:
-                url='http://' + server_ip + '/xyz/standalone/test0.json'
-                resp = urequests.get(url)
-                print(resp.status_code)
-                json_resp = resp.json()
-                lcd.move_to(1, 0)
-                lcd.putstr(json_resp['data']['hello'])
-                lcd.move_to(1, 1)
-                lcd.putstr(json_resp['data']['todo'])
-                print(resp.json())
                 led.value(0)
-            time.sleep(0.1) #delay 0.1s
-    except:
+                print('before data led 0 ' + localIp)
+                data = {"ip": localIp, "alarm": "off"}
+                print('data defined')
+                print(data)
+                # Convert the JSON data to a string
+                json_data = json.dumps(data)
+                print(json_data)
+
+                # Set the headers
+                headers = {"Content-Type": "application/json"}
+                
+                print('about to send request')
+
+                # Send the request
+                response = urequests.post("http://" + server_ip + "/updateHouseState", data=json_data, headers=headers)
+
+                # Print the response
+                print(response.status_code)
+                print(response.json())
+                json_resp = response.json()              
+                print('alarm off')
+            time.sleep(0.1)
+                    
+
+    except Exception as e:
         print('exception')
+        sys.print_exception(e)
         sta_if.disconnect()
 
 
@@ -103,7 +111,7 @@ i2c = I2C(scl=Pin(22), sda=Pin(21), freq=400000)
 lcd = I2cLcd(i2c, DEFAULT_I2C_ADDR, 2, 16)
 
 lcd.move_to(1, 0)
-lcd.putstr('Hello')
+lcd.putstr('Test')
 lcd.move_to(1, 1)
 lcd.putstr('Jessica & Katya')
 
