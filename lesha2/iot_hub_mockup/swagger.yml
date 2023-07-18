@@ -1,0 +1,89 @@
+openapi: 3.0.0
+info:
+  title: "Sigma Camp 2023 - IoT REST API"
+  description: "An API to manage Smart House models for Sigma Camp 2023 Semilab on IoT"
+  version: "1.0.0"
+
+servers:
+  - url: "/smarthouse/v1"
+
+components:
+  schemas:
+    House:
+      type: "object"
+      required:
+        - unique_id
+        - ip_address
+      properties:
+        unique_id:
+          type: "string"
+        ip_address:
+          type: "string"
+        state:
+          type: "object"
+          required:
+            - alarm
+            - wall_msg
+          properties:
+            alarm:
+              type: "boolean"
+            led:
+              type: "object"
+              required:
+                - active
+                - timestamp
+              properties:
+                active:
+                  type: "boolean"
+                timestamp:
+                  type: integer
+                  minimum: 0
+            wall_msg:
+              type: "string"
+
+paths:
+  /houses:
+    get:
+      operationId: "houses.read_all"
+      tags:
+        - Houses
+      summary: "Get the list of registered houses"
+      responses:
+        "200":
+          description: "Successfully provided the list of registered houses"
+    post:
+      operationId: "houses.create"
+      tags:
+        - Houses
+      summary: "Register a new house"
+      requestBody:
+          description: "House to register"
+          required: True
+          content:
+            application/json:
+              schema:
+                x-body-name: "house"
+                $ref: "#/components/schemas/House"
+      responses:
+        "201":
+          description: "Successfully registered a house"
+  /houses/{house}:
+    put:
+      operationId: "houses.update"
+      summary: "Update house"
+      tags:
+        - Houses
+      requestBody:
+          description: "House to update"
+          required: True
+          content:
+            application/json:
+              schema:
+                x-body-name: "house"
+                $ref: "#/components/schemas/House"
+      responses:
+        200:
+          description: House updated successfully
+        404:
+          description: House not found
+

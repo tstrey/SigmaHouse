@@ -1,0 +1,113 @@
+>>> %Run -c $EDITOR_CONTENT
+UPTIME[740531430s]:/log/app: Running on board ID: C8F09EB60250
+UPTIME[740531430s]:/log/app: Setting up core components
+UPTIME[740531430s]:/log/app: * LCD
+UPTIME[740531430s]:/log/app: * Event Loop
+UPTIME[740531430s]:/log/app: * IoT Hub Update Timer
+UPTIME[740531430s]:/log/app: Setting up peripheral devices
+UPTIME[740531430s]:/log/net/wifi: Initiating
+UPTIME[740531430s]:/log/in/button_a: Initiating on pin 16
+UPTIME[740531430s]:/log/in/button_a: Registering IRQ
+UPTIME[740531430s]:/log/in/button_b: Initiating on pin 25
+UPTIME[740531430s]:/log/in/button_b: Registering IRQ
+UPTIME[740531430s]:/log/out/led: Initiating on pin 12
+UPTIME[740531430s]:/log/in/motion: Initiating on pin 14
+UPTIME[740531430s]:/log/in/motion: Registering IRQ
+UPTIME[740531430s]:/log/menu: Initiating
+UPTIME[740531430s]:/log/menu: Add item: LED: ON         
+UPTIME[740531430s]:/log/menu: Add item: LED: OFF        
+UPTIME[740531430s]:/log/menu: Add item: FAN: ON         
+UPTIME[740531430s]:/log/menu: Add item: FAN: OFF        
+UPTIME[740531430s]:/log/menu: Add item: RGB: ON         
+UPTIME[740531430s]:/log/menu: Add item: RGB: OFF        
+UPTIME[740531430s]:/log/menu: Add item: ALARM: ON       
+UPTIME[740531430s]:/log/menu: Add item: ALARM: OFF      
+UPTIME[740531431s]:/log/net/wifi: Scanning
+UPTIME[740531433s]:/log/net/wifi: Detected SSID: NETGEAR03-2.4G-ext            |BSSID: A0:4E:6B:A4:6E:10|CH: 04|RSSI: -50|AUTH: 3|HID: False
+UPTIME[740531433s]:/log/net/wifi: Detected SSID: TP-Link_3E52                  |BSSID: AC:15:A2:31:3E:52|CH: 10|RSSI: -66|AUTH: 3|HID: False
+UPTIME[740531433s]:/log/net/wifi: Detected SSID: NETGEAR03                     |BSSID: 9C:3D:CF:85:E2:96|CH: 04|RSSI: -87|AUTH: 3|HID: False
+UPTIME[740531433s]:/log/net/wifi: Using SSID: TP-Link_3E52
+UPTIME[740531433s]:/log/net/wifi: Using PASS: 37424916
+UPTIME[740531433s]:/log/net/wifi: Using TOUT: 5s
+UPTIME[740531433s]:/log/net/wifi: Connecting [timeout: 05s]
+UPTIME[740531434s]:/log/net/wifi: Connecting [timeout: 04s]
+UPTIME[740531435s]:/log/net/wifi: Connected to SSID: TP-Link_3E52
+UPTIME[740531435s]:/log/net/wifi: IP Address: 192.168.0.101
+UPTIME[740531435s]:/log/net/wifi: MAC Address: C8:F0:9E:B6:02:50
+UPTIME[740531435s]:/log/app: Register with IoT Hub
+UPTIME[740531435s]:/log/app: * POST: {"unique_id": "C8F09EB60250", "ip_address": "192.168.0.101", "state": {"led": {"timestamp": 0, "active": false}, "wall_msg": "ID:C8F09EB60250", "alarm": false, "motion_alarm": {"motion_alarm": false}}} -> http://192.168.0.100/smarthouse/v1/houses
+UPTIME[740531435s]:/log/app: * RESPONSE: {'unique_id': 'C8F09EB60250', 'ip_address': '192.168.0.101', 'timestamp': '2023-06-19 23:10:35'}
+UPTIME[740531435s]:/log/app: Register event consumer
+UPTIME[740531435s]:/log/app: Enter event loop 1
+UPTIME[740531435s]:/log/app: hello from event_consumer
+UPTIME[740531438s]:/log/app: len(self.event_queue) = 
+UPTIME[740531438s]:/log/app: Got event: {'source': '/in/button_b', 'state': {'pressed_timestamp': 2634641, 'released_timestamp': 0, 'pressed_for_ms': 0, 'pressed': True}}
+UPTIME[740531438s]:/log/app: Execute action for menu item: LED: ON         
+UPTIME[740531438s]:/log/app: Turning LED ON
+UPTIME[740531439s]:/log/app: len(self.event_queue) = 
+UPTIME[740531439s]:/log/app: Got event: {'source': '/out/led', 'state': {'timestamp': 2634699, 'active': True}}
+UPTIME[740531439s]:/log/app: len(self.event_queue) = 
+UPTIME[740531439s]:/log/app: Got event: {'source': '/in/motion', 'state': {'motion_alarm': True}}
+UPTIME[740531439s]:/log/app: len(self.event_queue) = 
+UPTIME[740531439s]:/log/app: Got event: {'source': '/in/button_b', 'state': {'pressed_timestamp': 2634641, 'released_timestamp': 2634889, 'pressed_for_ms': 248, 'pressed': False}}
+UPTIME[740531440s]:/log/app: In _iot_hub_timer_callback, _iot_hub_update_flag = True
+[{'unique_id': '1337CAFECODE', 'ip_address': '192.168.1.42', 'state': {'led': {'timestamp': 0, 'active': False}, 'wall_msg': '', 'alarm': False}, 'timestamp': 52181}, {'unique_id': '1337C0FFFEEE', 'ip_address': '192.168.1.24', 'state': {'led': {'timestamp': 0, 'active': False}, 'wall_msg': '', 'alarm': False}, 'timestamp': 9891}, {'unique_id': 'C8F09EB60250', 'ip_address': '192.168.0.101', 'timestamp': '2023-06-19 23:10:35'}]
+from server 1337CAFECODE
+from server 1337C0FFFEEE
+from server C8F09EB60250
+globalAlarm is false 
+UPTIME[740531441s]:/log/app: * RESPONSE: [{'unique_id': '1337CAFECODE', 'ip_address': '192.168.1.42', 'state': {'led': {'timestamp': 0, 'active': False}, 'wall_msg': '', 'alarm': False}, 'timestamp': 52181}, {'unique_id': '1337C0FFFEEE', 'ip_address': '192.168.1.24', 'state': {'led': {'timestamp': 0, 'active': False}, 'wall_msg': '', 'alarm': False}, 'timestamp': 9891}, {'unique_id': 'C8F09EB60250', 'ip_address': '192.168.0.101', 'timestamp': '2023-06-19 23:10:35'}]
+UPTIME[740531441s]:/log/app: Time to update IoT Hub
+UPTIME[740531443s]:/log/app: len(self.event_queue) = 
+UPTIME[740531443s]:/log/app: Got event: {'source': '/in/motion', 'state': {'motion_alarm': False}}
+UPTIME[740531443s]:/log/app: len(self.event_queue) = 
+UPTIME[740531443s]:/log/app: Got event: {'source': '/in/button_a', 'state': {'pressed_timestamp': 2639053, 'released_timestamp': 0, 'pressed_for_ms': 0, 'pressed': True}}
+UPTIME[740531443s]:/log/menu: Moved to: LED: OFF        
+UPTIME[740531443s]:/log/app: len(self.event_queue) = 
+UPTIME[740531443s]:/log/app: Got event: {'source': '/in/button_a', 'state': {'pressed_timestamp': 2639053, 'released_timestamp': 2639301, 'pressed_for_ms': 248, 'pressed': False}}
+UPTIME[740531446s]:/log/app: len(self.event_queue) = 
+UPTIME[740531446s]:/log/app: Got event: {'source': '/in/button_b', 'state': {'pressed_timestamp': 2642227, 'released_timestamp': 0, 'pressed_for_ms': 0, 'pressed': True}}
+UPTIME[740531446s]:/log/app: Execute action for menu item: LED: OFF        
+UPTIME[740531446s]:/log/app: Turning LED OFF
+UPTIME[740531446s]:/log/app: len(self.event_queue) = 
+UPTIME[740531446s]:/log/app: Got event: {'source': '/out/led', 'state': {'timestamp': 2642345, 'active': False}}
+UPTIME[740531446s]:/log/app: len(self.event_queue) = 
+UPTIME[740531446s]:/log/app: Got event: {'source': '/in/button_b', 'state': {'pressed_timestamp': 2642227, 'released_timestamp': 2642472, 'pressed_for_ms': 245, 'pressed': False}}
+UPTIME[740531448s]:/log/app: len(self.event_queue) = 
+UPTIME[740531448s]:/log/app: Got event: {'source': '/in/button_a', 'state': {'pressed_timestamp': 2643924, 'released_timestamp': 0, 'pressed_for_ms': 0, 'pressed': True}}
+UPTIME[740531448s]:/log/menu: Moved to: FAN: ON         
+UPTIME[740531448s]:/log/app: len(self.event_queue) = 
+UPTIME[740531448s]:/log/app: Got event: {'source': '/in/button_a', 'state': {'pressed_timestamp': 2643924, 'released_timestamp': 2644191, 'pressed_for_ms': 267, 'pressed': False}}
+UPTIME[740531450s]:/log/app: In _iot_hub_timer_callback, _iot_hub_update_flag = True
+[{'unique_id': '1337CAFECODE', 'ip_address': '192.168.1.42', 'state': {'led': {'timestamp': 0, 'active': False}, 'wall_msg': '', 'alarm': False}, 'timestamp': 52181}, {'unique_id': '1337C0FFFEEE', 'ip_address': '192.168.1.24', 'state': {'led': {'timestamp': 0, 'active': False}, 'wall_msg': '', 'alarm': False}, 'timestamp': 9891}, {'unique_id': 'C8F09EB60250', 'ip_address': '192.168.0.101', 'timestamp': '2023-06-19 23:10:35'}]
+from server 1337CAFECODE
+from server 1337C0FFFEEE
+from server C8F09EB60250
+globalAlarm is false 
+UPTIME[740531451s]:/log/app: * RESPONSE: [{'unique_id': '1337CAFECODE', 'ip_address': '192.168.1.42', 'state': {'led': {'timestamp': 0, 'active': False}, 'wall_msg': '', 'alarm': False}, 'timestamp': 52181}, {'unique_id': '1337C0FFFEEE', 'ip_address': '192.168.1.24', 'state': {'led': {'timestamp': 0, 'active': False}, 'wall_msg': '', 'alarm': False}, 'timestamp': 9891}, {'unique_id': 'C8F09EB60250', 'ip_address': '192.168.0.101', 'timestamp': '2023-06-19 23:10:35'}]
+UPTIME[740531451s]:/log/app: Time to update IoT Hub
+UPTIME[740531452s]:/log/app: len(self.event_queue) = 
+UPTIME[740531452s]:/log/app: Got event: {'source': '/in/motion', 'state': {'motion_alarm': True}}
+UPTIME[740531458s]:/log/app: len(self.event_queue) = 
+UPTIME[740531458s]:/log/app: Got event: {'source': '/in/motion', 'state': {'motion_alarm': False}}
+UPTIME[740531460s]:/log/app: In _iot_hub_timer_callback, _iot_hub_update_flag = True
+[{'unique_id': '1337CAFECODE', 'ip_address': '192.168.1.42', 'state': {'led': {'timestamp': 0, 'active': False}, 'wall_msg': '', 'alarm': False}, 'timestamp': 52181}, {'unique_id': '1337C0FFFEEE', 'ip_address': '192.168.1.24', 'state': {'led': {'timestamp': 0, 'active': False}, 'wall_msg': '', 'alarm': False}, 'timestamp': 9891}, {'unique_id': 'C8F09EB60250', 'ip_address': '192.168.0.101', 'timestamp': '2023-06-19 23:10:35'}]
+from server 1337CAFECODE
+from server 1337C0FFFEEE
+from server C8F09EB60250
+globalAlarm is false 
+UPTIME[740531461s]:/log/app: * RESPONSE: [{'unique_id': '1337CAFECODE', 'ip_address': '192.168.1.42', 'state': {'led': {'timestamp': 0, 'active': False}, 'wall_msg': '', 'alarm': False}, 'timestamp': 52181}, {'unique_id': '1337C0FFFEEE', 'ip_address': '192.168.1.24', 'state': {'led': {'timestamp': 0, 'active': False}, 'wall_msg': '', 'alarm': False}, 'timestamp': 9891}, {'unique_id': 'C8F09EB60250', 'ip_address': '192.168.0.101', 'timestamp': '2023-06-19 23:10:35'}]
+UPTIME[740531461s]:/log/app: Time to update IoT Hub
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+UPTIME[740531464s]:/log/app: Keyboard interrupt detected. Stopping...
+UPTIME[740531464s]:/log/app: Exit event loop
+UPTIME[740531464s]:/log/app: Exiting
+UPTIME[740531464s]:/log/net/wifi: Disconnecting
+UPTIME[740531464s]:/log/in/button_a: De-registering IRQ
+UPTIME[740531464s]:/log/in/button_b: De-registering IRQ
+MicroPython v1.17 on 2021-09-02; ESP32 module with ESP32
+
+Type "help()" for more information.
+
+>>> 

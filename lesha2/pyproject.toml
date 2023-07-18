@@ -1,0 +1,85 @@
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  |  \.tox
+  | \.pytest_cache
+  | __pycache__
+)/
+'''
+
+[tool.poetry]
+name = "smart_house"
+version = "0.1.0"
+description = "MicroPython app to demo IoT concepts at Sigma Camp 2023"
+
+license = "MIT"
+
+authors = ["o6k7"]
+
+repository = ""
+homepage = ""
+
+readme = "README.md"
+
+include = [
+  "LICENSE.md",
+]
+
+keywords = [
+]
+
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Natural Language :: English",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+# code-lint
+flake8 = {version = "^5.0.0", optional = true}
+flake8-import-order = {version = "^0.18.2", optional = true}
+flake8-bandit = {version = "^4.1.1", optional = true}
+flake8-blind-except = {version = "^0.2.1", optional = true}
+flake8-bugbear = {version = "^23.3.12", optional = true}
+flake8-builtins = {version = "^2.1.0", optional = true}
+flake8-docstrings = {version = "^1.7.0", optional = true}
+flake8-logging-format = {version = "^0.9.0", optional = true}
+pep8-naming = {version = "^0.13.3", optional = true}
+pygments = {version = "^2.15.1", optional = true}
+
+# code-format
+black = {version = "^23.3.0", optional = true}
+blacken-docs = {version = "^1.13.0", optional = true}
+
+# micropython tool-chain
+huas-micropython = "^0.0.2"
+mpfshell-lite = "^1.0.2"
+
+# Flask
+Flask = "^2.2"
+connexion = {extras = ["swagger-ui"], version = "^2.14.2"}
+
+[tool.poetry.extras]
+
+code-lint = [
+  "flake8",
+  "flake8-import-order",
+  "flake8-bandit",
+  "flake8-blind-except",
+  "flake8-bugbear",
+  "flake8-builtins",
+  "flake8-docstrings",
+  "flake8-logging-format",
+  "pep8-naming",
+  "pygments",
+]
+
+code-format = [
+  "black",
+  "blacken-docs",
+]

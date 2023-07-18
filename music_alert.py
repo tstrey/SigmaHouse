@@ -25,6 +25,7 @@ def STA_Setup(ssidRouter,passwordRouter):
             sta_if.active(True)
             sta_if.connect(ssidRouter,passwordRouter)
             print("still connecting")
+            
             while not sta_if.isconnected():
                 pass
         print('Connected, IP address:', sta_if.ifconfig())
@@ -65,7 +66,6 @@ def poll_server():
     # Check if the hashmap has changed
     if alarmSate == 'on':
         # Handle the change
-        
         buzzer = PWM(Pin(25))
         buzzer.duty(1000)
         buzzer.freq(294)

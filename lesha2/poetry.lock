@@ -1,0 +1,778 @@
+[[package]]
+name = "attrs"
+version = "23.1.0"
+description = "Classes Without Boilerplate"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+cov = ["attrs", "coverage[toml] (>=5.3)"]
+dev = ["attrs", "pre-commit"]
+docs = ["furo", "myst-parser", "sphinx", "sphinx-notfound-page", "sphinxcontrib-towncrier", "towncrier", "zope-interface"]
+tests = ["attrs", "zope-interface"]
+tests-no-zope = ["cloudpickle", "hypothesis", "mypy (>=1.1.1)", "pympler", "pytest-mypy-plugins", "pytest-xdist", "pytest (>=4.3.0)"]
+
+[[package]]
+name = "bandit"
+version = "1.7.5"
+description = "Security oriented static analyser for python code."
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[package.dependencies]
+colorama = {version = ">=0.3.9", markers = "platform_system == \"Windows\""}
+GitPython = ">=1.0.1"
+PyYAML = ">=5.3.1"
+rich = "*"
+stevedore = ">=1.20.0"
+
+[package.extras]
+test = ["coverage (>=4.5.4)", "fixtures (>=3.0.0)", "flake8 (>=4.0.0)", "stestr (>=2.5.0)", "testscenarios (>=0.5.0)", "testtools (>=2.3.0)", "beautifulsoup4 (>=4.8.0)", "pylint (==1.9.4)", "tomli (>=1.1.0)"]
+toml = ["tomli (>=1.1.0)"]
+yaml = ["pyyaml"]
+
+[[package]]
+name = "black"
+version = "23.3.0"
+description = "The uncompromising code formatter."
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[package.dependencies]
+click = ">=8.0.0"
+mypy-extensions = ">=0.4.3"
+packaging = ">=22.0"
+pathspec = ">=0.9.0"
+platformdirs = ">=2"
+tomli = {version = ">=1.1.0", markers = "python_version < \"3.11\""}
+typing-extensions = {version = ">=3.10.0.0", markers = "python_version < \"3.10\""}
+
+[package.extras]
+colorama = ["colorama (>=0.4.3)"]
+d = ["aiohttp (>=3.7.4)"]
+jupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"]
+uvloop = ["uvloop (>=0.15.2)"]
+
+[[package]]
+name = "blacken-docs"
+version = "1.13.0"
+description = "Run Black on Python code blocks in documentation files."
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[package.dependencies]
+black = ">=22.1.0"
+
+[[package]]
+name = "certifi"
+version = "2023.5.7"
+description = "Python package for providing Mozilla's CA Bundle."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
+name = "charset-normalizer"
+version = "3.1.0"
+description = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
+category = "main"
+optional = false
+python-versions = ">=3.7.0"
+
+[[package]]
+name = "click"
+version = "8.1.3"
+description = "Composable command line interface toolkit"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[[package]]
+name = "clickclick"
+version = "20.10.2"
+description = "Click utility functions"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+click = ">=4.0"
+PyYAML = ">=3.11"
+
+[[package]]
+name = "colorama"
+version = "0.4.6"
+description = "Cross-platform colored terminal text."
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
+
+[[package]]
+name = "connexion"
+version = "2.14.2"
+description = "Connexion - API first applications with OpenAPI/Swagger and Flask"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+clickclick = ">=1.2,<21"
+flask = ">=1.0.4,<2.3"
+inflection = ">=0.3.1,<0.6"
+itsdangerous = ">=0.24"
+jsonschema = ">=2.5.1,<5"
+packaging = ">=20"
+PyYAML = ">=5.1,<7"
+requests = ">=2.9.1,<3"
+swagger-ui-bundle = {version = ">=0.0.2,<0.1", optional = true, markers = "extra == \"swagger-ui\""}
+werkzeug = ">=1.0,<2.3"
+
+[package.extras]
+aiohttp = ["aiohttp (>=2.3.10,<4)", "aiohttp-jinja2 (>=0.14.0,<2)", "MarkupSafe (>=0.23)"]
+docs = ["sphinx-autoapi (==1.8.1)"]
+flask = ["flask (>=1.0.4,<2.3)", "itsdangerous (>=0.24)"]
+swagger-ui = ["swagger-ui-bundle (>=0.0.2,<0.1)"]
+tests = ["decorator (>=5,<6)", "pytest (>=6,<7)", "pytest-cov (>=2,<3)", "testfixtures (>=6,<7)", "flask (>=1.0.4,<2.3)", "itsdangerous (>=0.24)", "swagger-ui-bundle (>=0.0.2,<0.1)", "aiohttp (>=2.3.10,<4)", "aiohttp-jinja2 (>=0.14.0,<2)", "MarkupSafe (>=0.23)", "pytest-aiohttp", "aiohttp-remotes"]
+
+[[package]]
+name = "flake8"
+version = "5.0.4"
+description = "the modular source code checker: pep8 pyflakes and co"
+category = "main"
+optional = true
+python-versions = ">=3.6.1"
+
+[package.dependencies]
+mccabe = ">=0.7.0,<0.8.0"
+pycodestyle = ">=2.9.0,<2.10.0"
+pyflakes = ">=2.5.0,<2.6.0"
+
+[[package]]
+name = "flake8-bandit"
+version = "4.1.1"
+description = "Automated security testing with bandit and flake8."
+category = "main"
+optional = true
+python-versions = ">=3.6"
+
+[package.dependencies]
+bandit = ">=1.7.3"
+flake8 = ">=5.0.0"
+
+[[package]]
+name = "flake8-blind-except"
+version = "0.2.1"
+description = "A flake8 extension that checks for blind except: statements"
+category = "main"
+optional = true
+python-versions = "*"
+
+[[package]]
+name = "flake8-bugbear"
+version = "23.3.12"
+description = "A plugin for flake8 finding likely bugs and design problems in your program. Contains warnings that don't belong in pyflakes and pycodestyle."
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[package.dependencies]
+attrs = ">=19.2.0"
+flake8 = ">=3.0.0"
+
+[package.extras]
+dev = ["tox", "coverage", "hypothesis", "hypothesmith (>=0.2)", "pre-commit", "pytest"]
+
+[[package]]
+name = "flake8-builtins"
+version = "2.1.0"
+description = "Check for python builtins being used as variables or parameters."
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[package.dependencies]
+flake8 = "*"
+
+[package.extras]
+test = ["pytest"]
+
+[[package]]
+name = "flake8-docstrings"
+version = "1.7.0"
+description = "Extension for flake8 which uses pydocstyle to check docstrings"
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[package.dependencies]
+flake8 = ">=3"
+pydocstyle = ">=2.1"
+
+[[package]]
+name = "flake8-import-order"
+version = "0.18.2"
+description = "Flake8 and pylama plugin that checks the ordering of import statements."
+category = "main"
+optional = true
+python-versions = "*"
+
+[package.dependencies]
+pycodestyle = "*"
+
+[[package]]
+name = "flake8-logging-format"
+version = "0.9.0"
+description = ""
+category = "main"
+optional = true
+python-versions = "*"
+
+[package.extras]
+lint = ["flake8"]
+test = ["pytest", "pytest-cov", "pyhamcrest"]
+
+[[package]]
+name = "flask"
+version = "2.2.5"
+description = "A simple framework for building complex web applications."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+click = ">=8.0"
+importlib-metadata = {version = ">=3.6.0", markers = "python_version < \"3.10\""}
+itsdangerous = ">=2.0"
+Jinja2 = ">=3.0"
+Werkzeug = ">=2.2.2"
+
+[package.extras]
+async = ["asgiref (>=3.2)"]
+dotenv = ["python-dotenv"]
+
+[[package]]
+name = "gitdb"
+version = "4.0.10"
+description = "Git Object Database"
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[package.dependencies]
+smmap = ">=3.0.1,<6"
+
+[[package]]
+name = "gitpython"
+version = "3.1.31"
+description = "GitPython is a Python library used to interact with Git repositories"
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[package.dependencies]
+gitdb = ">=4.0.1,<5"
+
+[[package]]
+name = "huas-micropython"
+version = "0.0.2"
+description = "Micropython stub files and dependencies"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.extras]
+all = ["adafruit-ampy", "esptool"]
+
+[[package]]
+name = "idna"
+version = "3.4"
+description = "Internationalized Domain Names in Applications (IDNA)"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
+name = "importlib-metadata"
+version = "6.6.0"
+description = "Read metadata from Python packages"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+zipp = ">=0.5"
+
+[package.extras]
+docs = ["sphinx (>=3.5)", "jaraco.packaging (>=9)", "rst.linker (>=1.9)", "furo", "sphinx-lint", "jaraco.tidelift (>=1.4)"]
+perf = ["ipython"]
+testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-cov", "pytest-enabler (>=1.3)", "packaging", "pyfakefs", "flufl.flake8", "pytest-perf (>=0.9.2)", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "pytest-flake8", "importlib-resources (>=1.3)"]
+
+[[package]]
+name = "importlib-resources"
+version = "5.12.0"
+description = "Read resources from Python packages"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+zipp = {version = ">=3.1.0", markers = "python_version < \"3.10\""}
+
+[package.extras]
+docs = ["sphinx (>=3.5)", "jaraco.packaging (>=9)", "rst.linker (>=1.9)", "furo", "sphinx-lint", "jaraco.tidelift (>=1.4)"]
+testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-cov", "pytest-enabler (>=1.3)", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "pytest-flake8"]
+
+[[package]]
+name = "inflection"
+version = "0.5.1"
+description = "A port of Ruby on Rails inflector to Python"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
+name = "itsdangerous"
+version = "2.1.2"
+description = "Safely pass data to untrusted environments and back."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "jinja2"
+version = "3.1.2"
+description = "A very fast and expressive template engine."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+MarkupSafe = ">=2.0"
+
+[package.extras]
+i18n = ["Babel (>=2.7)"]
+
+[[package]]
+name = "jsonschema"
+version = "4.17.3"
+description = "An implementation of JSON Schema validation for Python"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+attrs = ">=17.4.0"
+importlib-resources = {version = ">=1.4.0", markers = "python_version < \"3.9\""}
+pkgutil-resolve-name = {version = ">=1.3.10", markers = "python_version < \"3.9\""}
+pyrsistent = ">=0.14.0,<0.17.0 || >0.17.0,<0.17.1 || >0.17.1,<0.17.2 || >0.17.2"
+
+[package.extras]
+format = ["fqdn", "idna", "isoduration", "jsonpointer (>1.13)", "rfc3339-validator", "rfc3987", "uri-template", "webcolors (>=1.11)"]
+format-nongpl = ["fqdn", "idna", "isoduration", "jsonpointer (>1.13)", "rfc3339-validator", "rfc3986-validator (>0.1.0)", "uri-template", "webcolors (>=1.11)"]
+
+[[package]]
+name = "markdown-it-py"
+version = "2.2.0"
+description = "Python port of markdown-it. Markdown parsing, done right!"
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[package.dependencies]
+mdurl = ">=0.1,<1.0"
+
+[package.extras]
+benchmarking = ["psutil", "pytest", "pytest-benchmark"]
+code_style = ["pre-commit (>=3.0,<4.0)"]
+compare = ["commonmark (>=0.9,<1.0)", "markdown (>=3.4,<4.0)", "mistletoe (>=1.0,<2.0)", "mistune (>=2.0,<3.0)", "panflute (>=2.3,<3.0)"]
+linkify = ["linkify-it-py (>=1,<3)"]
+plugins = ["mdit-py-plugins"]
+profiling = ["gprof2dot"]
+rtd = ["attrs", "myst-parser", "pyyaml", "sphinx", "sphinx-copybutton", "sphinx-design", "sphinx-book-theme"]
+testing = ["coverage", "pytest", "pytest-cov", "pytest-regressions"]
+
+[[package]]
+name = "markupsafe"
+version = "2.1.2"
+description = "Safely add untrusted strings to HTML/XML markup."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "mccabe"
+version = "0.7.0"
+description = "McCabe checker, plugin for flake8"
+category = "main"
+optional = true
+python-versions = ">=3.6"
+
+[[package]]
+name = "mdurl"
+version = "0.1.2"
+description = "Markdown URL utilities"
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[[package]]
+name = "mpfshell-lite"
+version = "1.0.2"
+description = "The lightweight version of the mpfshell is for pure CUI drivers."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+pyserial = "*"
+websocket-client = "*"
+
+[[package]]
+name = "mypy-extensions"
+version = "1.0.0"
+description = "Type system extensions for programs checked with the mypy type checker."
+category = "main"
+optional = true
+python-versions = ">=3.5"
+
+[[package]]
+name = "packaging"
+version = "23.1"
+description = "Core utilities for Python packages"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "pathspec"
+version = "0.11.1"
+description = "Utility library for gitignore style pattern matching of file paths."
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[[package]]
+name = "pbr"
+version = "5.11.1"
+description = "Python Build Reasonableness"
+category = "main"
+optional = true
+python-versions = ">=2.6"
+
+[[package]]
+name = "pep8-naming"
+version = "0.13.3"
+description = "Check PEP-8 naming conventions, plugin for flake8"
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[package.dependencies]
+flake8 = ">=5.0.0"
+
+[[package]]
+name = "pkgutil-resolve-name"
+version = "1.3.10"
+description = "Resolve a name to an object."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
+name = "platformdirs"
+version = "3.5.1"
+description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["furo (>=2023.3.27)", "proselint (>=0.13)", "sphinx-autodoc-typehints (>=1.23,!=1.23.4)", "sphinx (>=6.2.1)"]
+test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest-cov (>=4)", "pytest-mock (>=3.10)", "pytest (>=7.3.1)"]
+
+[[package]]
+name = "pycodestyle"
+version = "2.9.1"
+description = "Python style guide checker"
+category = "main"
+optional = true
+python-versions = ">=3.6"
+
+[[package]]
+name = "pydocstyle"
+version = "6.3.0"
+description = "Python docstring style checker"
+category = "main"
+optional = true
+python-versions = ">=3.6"
+
+[package.dependencies]
+snowballstemmer = ">=2.2.0"
+
+[package.extras]
+toml = ["tomli (>=1.2.3)"]
+
+[[package]]
+name = "pyflakes"
+version = "2.5.0"
+description = "passive checker of Python programs"
+category = "main"
+optional = true
+python-versions = ">=3.6"
+
+[[package]]
+name = "pygments"
+version = "2.15.1"
+description = "Pygments is a syntax highlighting package written in Python."
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[package.extras]
+plugins = ["importlib-metadata"]
+
+[[package]]
+name = "pyrsistent"
+version = "0.19.3"
+description = "Persistent/Functional/Immutable data structures"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "pyserial"
+version = "3.5"
+description = "Python Serial Port Extension"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+cp2110 = ["hidapi"]
+
+[[package]]
+name = "pyyaml"
+version = "6.0"
+description = "YAML parser and emitter for Python"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
+name = "requests"
+version = "2.31.0"
+description = "Python HTTP for Humans."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+certifi = ">=2017.4.17"
+charset-normalizer = ">=2,<4"
+idna = ">=2.5,<4"
+urllib3 = ">=1.21.1,<3"
+
+[package.extras]
+socks = ["PySocks (>=1.5.6,!=1.5.7)"]
+use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
+
+[[package]]
+name = "rich"
+version = "13.3.5"
+description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
+category = "main"
+optional = true
+python-versions = ">=3.7.0"
+
+[package.dependencies]
+markdown-it-py = ">=2.2.0,<3.0.0"
+pygments = ">=2.13.0,<3.0.0"
+typing-extensions = {version = ">=4.0.0,<5.0", markers = "python_version < \"3.9\""}
+
+[package.extras]
+jupyter = ["ipywidgets (>=7.5.1,<9)"]
+
+[[package]]
+name = "smmap"
+version = "5.0.0"
+description = "A pure Python implementation of a sliding window memory map manager"
+category = "main"
+optional = true
+python-versions = ">=3.6"
+
+[[package]]
+name = "snowballstemmer"
+version = "2.2.0"
+description = "This package provides 29 stemmers for 28 languages generated from Snowball algorithms."
+category = "main"
+optional = true
+python-versions = "*"
+
+[[package]]
+name = "stevedore"
+version = "5.1.0"
+description = "Manage dynamic plugins for Python applications"
+category = "main"
+optional = true
+python-versions = ">=3.8"
+
+[package.dependencies]
+pbr = ">=2.0.0,<2.1.0 || >2.1.0"
+
+[[package]]
+name = "swagger-ui-bundle"
+version = "0.0.9"
+description = "swagger_ui_bundle - swagger-ui files in a pip package"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Jinja2 = ">=2.0"
+
+[[package]]
+name = "tomli"
+version = "2.0.1"
+description = "A lil' TOML parser"
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[[package]]
+name = "typing-extensions"
+version = "4.6.2"
+description = "Backported and Experimental Type Hints for Python 3.7+"
+category = "main"
+optional = true
+python-versions = ">=3.7"
+
+[[package]]
+name = "urllib3"
+version = "2.0.2"
+description = "HTTP library with thread-safe connection pooling, file post, and more."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+brotli = ["brotli (>=1.0.9)", "brotlicffi (>=0.8.0)"]
+secure = ["certifi", "cryptography (>=1.9)", "idna (>=2.0.0)", "pyopenssl (>=17.1.0)", "urllib3-secure-extra"]
+socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
+zstd = ["zstandard (>=0.18.0)"]
+
+[[package]]
+name = "websocket-client"
+version = "1.5.2"
+description = "WebSocket client for Python with low level API options"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["Sphinx (>=3.4)", "sphinx-rtd-theme (>=0.5)"]
+optional = ["python-socks", "wsaccel"]
+test = ["websockets"]
+
+[[package]]
+name = "werkzeug"
+version = "2.2.3"
+description = "The comprehensive WSGI web application library."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+MarkupSafe = ">=2.1.1"
+
+[package.extras]
+watchdog = ["watchdog"]
+
+[[package]]
+name = "zipp"
+version = "3.15.0"
+description = "Backport of pathlib-compatible object wrapper for zip files"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["sphinx (>=3.5)", "jaraco.packaging (>=9)", "rst.linker (>=1.9)", "furo", "sphinx-lint", "jaraco.tidelift (>=1.4)"]
+testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-cov", "pytest-enabler (>=1.3)", "jaraco.itertools", "jaraco.functools", "more-itertools", "big-o", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "pytest-flake8"]
+
+[extras]
+code-format = ["black", "blacken-docs"]
+code-lint = ["flake8", "flake8-import-order", "flake8-bandit", "flake8-blind-except", "flake8-bugbear", "flake8-builtins", "flake8-docstrings", "flake8-logging-format", "pep8-naming", "pygments"]
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.8"
+content-hash = "842eb235bf6bafe83ff18ef0153255fb535df29dceb73e2141e7083f161de115"
+
+[metadata.files]
+attrs = []
+bandit = []
+black = []
+blacken-docs = []
+certifi = []
+charset-normalizer = []
+click = []
+clickclick = []
+colorama = []
+connexion = []
+flake8 = []
+flake8-bandit = []
+flake8-blind-except = []
+flake8-bugbear = []
+flake8-builtins = []
+flake8-docstrings = []
+flake8-import-order = []
+flake8-logging-format = []
+flask = []
+gitdb = []
+gitpython = []
+huas-micropython = []
+idna = []
+importlib-metadata = []
+importlib-resources = []
+inflection = []
+itsdangerous = []
+jinja2 = []
+jsonschema = []
+markdown-it-py = []
+markupsafe = []
+mccabe = []
+mdurl = []
+mpfshell-lite = []
+mypy-extensions = []
+packaging = []
+pathspec = []
+pbr = []
+pep8-naming = []
+pkgutil-resolve-name = []
+platformdirs = []
+pycodestyle = []
+pydocstyle = []
+pyflakes = []
+pygments = []
+pyrsistent = []
+pyserial = []
+pyyaml = []
+requests = []
+rich = []
+smmap = []
+snowballstemmer = []
+stevedore = []
+swagger-ui-bundle = []
+tomli = []
+typing-extensions = []
+urllib3 = []
+websocket-client = []
+werkzeug = []
+zipp = []
